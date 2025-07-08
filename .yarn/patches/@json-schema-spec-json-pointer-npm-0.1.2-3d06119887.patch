@@ -1,0 +1,8 @@
+eval(instance) {
+    for (const token of this.tokens) {
+        if (Object.prototype.hasOwnProperty.call(instance, token)) {
+            instance = instance[token];
+        }
+    }
+    return instance;
+}
