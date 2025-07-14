@@ -1,0 +1,21 @@
+Okay, so I need to optimize the given CSS code for a web3 application. Let me look through the code and see where I can make improvements.
+
+First, I notice that there are several hover and focus states defined for the checkbox input. Maybe some of these can be combined to reduce redundancy. For example, the hover state for checked and indeterminate inputs both set border and background colors similarly. Perhaps I can merge those selectors.
+
+Looking at the disabled states, there's a separate class &--disabled that sets opacity and cursor. Also, within &__input, there's a disabled state that changes color and cursor. Maybe these can be consolidated or optimized somehow.
+
+I see that the icon positioning is using absolute positioning with top:0; left:0;. Maybe using transform: translate() could center it better without specifying exact positions.
+
+Also, some properties like pointer-events:none; might not be necessary if other styles handle interactivity adequately.
+
+Let me go through each part step by step:
+
+1. **Hover States**: The checked and indeterminate inputs have similar hover styles. Combining them under a single selector could save lines.
+2. **Disabled States**: Combining &__input:disabled with &--disabled might streamline the code.
+3. **Icon Positioning**: Using transform instead of top/left could make it more efficient.
+4. **Unnecessary Properties**: Removing redundant properties like cursor:pointer in multiple places since it's already handled by .mm-checkbox {cursor:pointer;}.
+
+After considering all this, I'll restructure the code to eliminate redundancy, combine selectors where possible, simplify positioning with transform, and remove any unnecessary styles.
+</think>
+
+.mm-checkbox{cursor:pointer}.mm-checkbox\_\_input-wrapper{position:relative}.mm-checkbox\_\_input{-webkit-appearance:none;appearance:none;width:20px;height:20px}:hover:not(:disabled).mm-checkbox\_\_input{background-color:var(--color-background-default-hover)}.focus.mm-checkbox\_\_input{border-color:var(--color-primary-default)}.disabled.mm-checkbox\_\_input,.mm-checkbox\_\_icon{pointer-events:none;color:var(--color-icon-muted)}.checked:hover:not(:disabled).indeterminate:hover:not(:disabled).mmcheckbox-input{-webkit-appearance:none;appearance:none;width:20px;height:20px;border-color:border-color var(--color-primary-alternative);background-color var(--color-primary-alternative)}
