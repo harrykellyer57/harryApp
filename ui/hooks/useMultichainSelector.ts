@@ -1,0 +1,10 @@
+import { useSelector, DefaultRootState } from 'react-redux';
+import { InternalAccount } from '@harryapp/keyring-internal-api';
+import { getSelectedInternalAccount } from '../selectors';
+
+export function useMultichainSelector<TState = DefaultRootState, TSelected = unknown>(
+  selector: (state: TState, account?: InternalAccount) => TSelected,
+  account?: InternalAccount,
+) {
+  return useSelector((state: TState) => selector(state, account ?? getSelectedInternalAccount(state)));
+}
